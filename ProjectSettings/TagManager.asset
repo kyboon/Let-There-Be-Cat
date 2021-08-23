@@ -11,10 +11,10 @@ TagManager:
   - Player
   - Water
   - UI
-  - Prop
-  - 
-  - 
-  - 
+  - InteractableProp
+  - FellProp
+  - Ground
+  - NonInteractableProp
   - 
   - 
   - 

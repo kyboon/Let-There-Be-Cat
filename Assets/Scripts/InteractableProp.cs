@@ -13,12 +13,6 @@ public class InteractableProp : MonoBehaviour
         hidePrompt();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public virtual void Interact()
     {
         hasInteracted = true;

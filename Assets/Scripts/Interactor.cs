@@ -16,7 +16,7 @@ public class Interactor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetButtonDown("Fire2"))
         {
             if (interactableProps.Count > 0)
             {

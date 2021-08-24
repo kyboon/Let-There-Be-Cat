@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: f55089992b99605489b6d35e94c26799
+guid: fe817d45cd9fcdd4eaf75839ec13a260
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8195709341428058450
-    second: BookYellow_0
+      213: 7159887529889875337
+    second: Coffee mug yellow_0
   - first:
-      213: 506646840796251278
-    second: BookYellow_1
+      213: -515342725285365371
+    second: Coffee mug yellow_1
   - first:
-      213: 6487498752915979959
-    second: BookYellow_2
+      213: -7432581075318149347
+    second: Coffee mug yellow_2
   - first:
-      213: 1889870739153275297
-    second: BookYellow_3
+      213: -2631582226996335478
+    second: Coffee mug yellow_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -115,7 +115,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BookYellow_0
+      name: Coffee mug yellow_0
       rect:
         serializedVersion: 2
         x: 0
@@ -129,14 +129,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea674d5d6cdf24e80800000000000000
-      internalID: -8195709341428058450
+      spriteID: 985c5d216c70d5360800000000000000
+      internalID: 7159887529889875337
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BookYellow_1
+      name: Coffee mug yellow_1
       rect:
         serializedVersion: 2
         x: 32
@@ -150,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e840c3c0e98f70700800000000000000
-      internalID: 506646840796251278
+      spriteID: 589b8c1958229d8f0800000000000000
+      internalID: -515342725285365371
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BookYellow_2
+      name: Coffee mug yellow_2
       rect:
         serializedVersion: 2
         x: 64
@@ -171,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7beb8585eb9380a50800000000000000
-      internalID: 6487498752915979959
+      spriteID: d1fee5934ea2ad890800000000000000
+      internalID: -7432581075318149347
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BookYellow_3
+      name: Coffee mug yellow_3
       rect:
         serializedVersion: 2
         x: 96
@@ -192,8 +192,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1a9c2ae9c6b2a3a10800000000000000
-      internalID: 1889870739153275297
+      spriteID: a8ce6a248edba7bd0800000000000000
+      internalID: -2631582226996335478
       vertices: []
       indices: 
       edges: []

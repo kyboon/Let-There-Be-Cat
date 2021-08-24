@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: f55089992b99605489b6d35e94c26799
+guid: 60c58cac88736724badf810442d4c5ee
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8195709341428058450
-    second: BookYellow_0
+      213: 5891961721506845187
+    second: BookBlue_0
   - first:
-      213: 506646840796251278
-    second: BookYellow_1
+      213: 2225280509637182808
+    second: BookBlue_1
   - first:
-      213: 6487498752915979959
-    second: BookYellow_2
+      213: 7693361398878344407
+    second: BookBlue_2
   - first:
-      213: 1889870739153275297
-    second: BookYellow_3
+      213: -2413391969435562396
+    second: BookBlue_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -115,7 +115,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BookYellow_0
+      name: BookBlue_0
       rect:
         serializedVersion: 2
         x: 0
@@ -129,14 +129,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea674d5d6cdf24e80800000000000000
-      internalID: -8195709341428058450
+      spriteID: 3025d9008f374c150800000000000000
+      internalID: 5891961721506845187
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BookYellow_1
+      name: BookBlue_1
       rect:
         serializedVersion: 2
         x: 32
@@ -150,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e840c3c0e98f70700800000000000000
-      internalID: 506646840796251278
+      spriteID: 855468e55d8c1ee10800000000000000
+      internalID: 2225280509637182808
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BookYellow_2
+      name: BookBlue_2
       rect:
         serializedVersion: 2
         x: 64
@@ -171,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7beb8585eb9380a50800000000000000
-      internalID: 6487498752915979959
+      spriteID: 7d498dc5e6f44ca60800000000000000
+      internalID: 7693361398878344407
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BookYellow_3
+      name: BookBlue_3
       rect:
         serializedVersion: 2
         x: 96
@@ -192,8 +192,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1a9c2ae9c6b2a3a10800000000000000
-      internalID: 1889870739153275297
+      spriteID: 46e430e5ac8e18ed0800000000000000
+      internalID: -2413391969435562396
       vertices: []
       indices: 
       edges: []

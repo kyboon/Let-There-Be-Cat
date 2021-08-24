@@ -1080,6 +1080,14 @@ PrefabInstance:
       propertyPath: colliderDisableWhenJump
       value: 
       objectReference: {fileID: 1299820257}
+    - target: {fileID: 662020194077357251, guid: 4ba394302c0ab0149a6776d6ac211e69, type: 3}
+      propertyPath: m_Radius
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 662020194077357251, guid: 4ba394302c0ab0149a6776d6ac211e69, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 662020194077357254, guid: 4ba394302c0ab0149a6776d6ac211e69, type: 3}
       propertyPath: m_RootOrder
       value: 3

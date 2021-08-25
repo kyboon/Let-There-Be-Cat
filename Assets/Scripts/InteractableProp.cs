@@ -5,20 +5,28 @@ using UnityEngine;
 public class InteractableProp : MonoBehaviour
 {
     public GameObject promptObject;
-    private bool hasInteracted = false;
+
+    [HideInInspector]
+    public bool hasInteracted = false;
     private Interactor interactor;
+
+    [HideInInspector]
+    public bool canOnlyInteractOnce = true;
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         hidePrompt();
     }
 
     public virtual void Interact()
     {
-        hasInteracted = true;
-        hidePrompt();
-        if (interactor != null)
-            interactor.DeregisterInteractable(this);
+        if (canOnlyInteractOnce)
+        {
+            hasInteracted = true;
+            hidePrompt();
+            if (interactor != null)
+                interactor.DeregisterInteractable(this);
+        }
         Debug.Log("Interacted with " + gameObject.ToString());
     }
 

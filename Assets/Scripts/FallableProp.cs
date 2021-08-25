@@ -10,7 +10,15 @@ public class FallableProp : InteractableProp
     public float fallRotateSpeed = 270f;
     public Animator animator;
     public AnimatorOverrideController animOverride;
-    
+
+    protected override void Start()
+    {
+        base.Start();
+        if (animator != null && animOverride != null)
+        {
+            animator.runtimeAnimatorController = animOverride;
+        }
+    }
     public override void Interact()
     {
         base.Interact();
@@ -22,11 +30,6 @@ public class FallableProp : InteractableProp
         yield return new WaitForSeconds(0.3f);
         isFallen = true;
         gameObject.layer = 7; // change layer to fell prop
-
-        if (animator != null && animOverride != null)
-        {
-            animator.runtimeAnimatorController = animOverride;
-        }
     }
 
     public void FixedUpdate()

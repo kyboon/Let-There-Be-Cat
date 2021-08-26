@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public interface FallListener
+{
+    public void Broken(GameObject prop);
+}
 public class FallableProp : InteractableProp
 {
     // Start is called before the first frame update
@@ -10,6 +14,8 @@ public class FallableProp : InteractableProp
     public float fallRotateSpeed = 270f;
     public Animator animator;
     public AnimatorOverrideController animOverride;
+
+    public FallListener listener;
 
     protected override void Start()
     {
@@ -52,6 +58,13 @@ public class FallableProp : InteractableProp
             if (animator != null)
             {
                 animator.SetTrigger("Break");
+            }
+
+            addScore();
+
+            if (listener != null)
+            {
+                listener.Broken(gameObject);
             }
         }
     }

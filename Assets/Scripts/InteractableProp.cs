@@ -10,8 +10,11 @@ public class InteractableProp : MonoBehaviour
     public bool hasInteracted = false;
     private Interactor interactor;
 
+    public int scorePerInteraction = 1;
+
     [HideInInspector]
     public bool canOnlyInteractOnce = true;
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -57,5 +60,9 @@ public class InteractableProp : MonoBehaviour
         {
             promptObject.SetActive(false);
         }
+    }
+    public void addScore()
+    {
+        PlayerManager.instance.addScore(scorePerInteraction);
     }
 }

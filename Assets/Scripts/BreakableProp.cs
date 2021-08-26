@@ -41,5 +41,7 @@ public class BreakableProp : InteractableProp
         }
 
         canOnlyInteractOnce = breakSprites.Count + (hasBreakAnimation ? 1 : 0) <= 1;
+
+        addScore();
     }
 }

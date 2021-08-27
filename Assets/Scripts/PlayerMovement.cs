@@ -30,10 +30,6 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             jump = true;
-            if (animator != null)
-            {
-                animator.SetTrigger("Jump");
-            }
         }
     }
 

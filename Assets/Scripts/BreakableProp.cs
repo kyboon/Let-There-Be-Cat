@@ -11,6 +11,8 @@ public class BreakableProp : InteractableProp
     public AnimatorOverrideController animOverride;
     private bool hasBreakAnimation = false;
 
+    public ParticleSystem breakParticle;
+
     protected override void Start()
     {
         base.Start();
@@ -39,6 +41,9 @@ public class BreakableProp : InteractableProp
             spriteRenderer.sprite = breakSprites[0];
             breakSprites.RemoveAt(0);
         }
+
+        if (breakSprites.Count == 0 && breakParticle != null)
+            breakParticle.Play(true);
 
         canOnlyInteractOnce = breakSprites.Count + (hasBreakAnimation ? 1 : 0) <= 1;
 

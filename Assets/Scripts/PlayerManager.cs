@@ -17,6 +17,8 @@ public class PlayerManager : MonoBehaviour
     public Text mainMenuScore;
     public GameObject resumeButton;
 
+    public CutSceneManager cutSceneManager;
+
     public int difficultySet = 0;
 
     public HumanSpawner humanSpawner;
@@ -55,10 +57,29 @@ public class PlayerManager : MonoBehaviour
         {
             humanSpawner.setDifficulty(1);
             difficultySet = 1;
-        } else if (score >= 50 && difficultySet == 1)
+            if (cutSceneManager != null)
+                cutSceneManager.PlayCutScene(0);
+        } 
+        else if (score >= 50 && difficultySet == 1)
         {
             humanSpawner.setDifficulty(2);
             difficultySet = 2;
+            if (cutSceneManager != null)
+                cutSceneManager.PlayCutScene(1);
+        }
+        else if (score >= 80 && difficultySet == 2)
+        {
+            humanSpawner.setDifficulty(3);
+            difficultySet = 3;
+            if (cutSceneManager != null)
+                cutSceneManager.PlayCutScene(2);
+        }
+        else if (score >= 110 && difficultySet == 3)
+        {
+            humanSpawner.setDifficulty(4);
+            difficultySet = 4;
+            if (cutSceneManager != null)
+                cutSceneManager.PlayCutScene(3);
         }
     }
     public void GameOver()
@@ -66,6 +87,7 @@ public class PlayerManager : MonoBehaviour
         Time.timeScale = 0;
         Debug.Log("GameOver");
         showMenu(true);
+        AudioManager.instance.PlaySound(0);
     }
 
     public void PauseGame()

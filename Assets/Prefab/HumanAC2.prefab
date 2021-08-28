@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 1616605373168676281}
   - component: {fileID: 1616605373168676282}
   - component: {fileID: 1616605373168676287}
-  m_Layer: 0
+  - component: {fileID: 5688993232548684814}
+  m_Layer: 10
   m_Name: HumanAC2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,10 +126,42 @@ MonoBehaviour:
   pursueSpeed: 5
   grabDelay: 0.25
   postGrabDelay: 0.5
+  isSlip: 0
+  slipRecoverTime: 3
+  speedRandomRange: 0.3
   grabAllHeight: 1
+  isRanged: 0
+  netPrefab: {fileID: 0}
   questionMark: {fileID: 9076593333675648256}
   exclamationMark: {fileID: 5833872513558381076}
   animOverride: {fileID: 22100000, guid: a7a2cdcf802415047b6264978e4beda4, type: 2}
+  grabSoundIndex: 13
+--- !u!61 &5688993232548684814
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1616605373168676283}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -1.5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4, y: 4}
+    newSize: {x: 4, y: 4}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &5833872513558381076
 GameObject:
   m_ObjectHideFlags: 0

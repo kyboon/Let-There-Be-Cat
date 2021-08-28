@@ -335,6 +335,8 @@ MonoBehaviour:
   animator: {fileID: 0}
   animOverride: {fileID: 0}
   breakParticle: {fileID: 3669123820207377726}
+  breakAudioIndex: 9
+  breakAudioCount: 2
 --- !u!1001 &633403376820223501
 PrefabInstance:
   m_ObjectHideFlags: 0

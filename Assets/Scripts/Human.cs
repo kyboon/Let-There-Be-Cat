@@ -18,13 +18,23 @@ public class Human : MonoBehaviour
     public float grabDelay = 0.5f;
     public float postGrabDelay = 0.5f;
 
+    public bool isSlip = false;
+    public float slipRecoverTime = 3f;
+
+    public float speedRandomRange = 0.3f;
+
     public bool grabAllHeight = false;
+    public bool isRanged = false;
+
+    public GameObject netPrefab;
 
     public GameObject questionMark;
     public GameObject exclamationMark;
 
     private Animator animator;
     public AnimatorOverrideController animOverride;
+
+    public int grabSoundIndex = -1;
 
     void Start()
     {
@@ -36,6 +46,8 @@ public class Human : MonoBehaviour
         {
             animator.runtimeAnimatorController = animOverride;
         }
+
+        pursueSpeed += Random.Range(-speedRandomRange, speedRandomRange);
     }
 
     // Update is called once per frame
@@ -54,40 +66,71 @@ public class Human : MonoBehaviour
         else
             animator.SetInteger("GrabHeight", 1);
         animator.SetTrigger("Grab");
-        StartCoroutine(grabDone());
+
+        if (grabSoundIndex != -1)
+        {
+            AudioManager.instance.PlaySound(grabSoundIndex);
+        }
+
+        if (isRanged)
+        {
+            StartCoroutine(shootNet());
+            StartCoroutine(grabDone(false));
+        }
+        else
+        {
+            StartCoroutine(grabDone(true));
+        }
     }
 
-    IEnumerator grabDone()
+    IEnumerator shootNet()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        if (netPrefab != null)
+        {
+            Vector3 direction = (playerTransform.position - transform.position).normalized;
+            GameObject netGO = Instantiate(netPrefab, transform.position + direction, transform.rotation);
+            Net netScript = netGO.GetComponent<Net>();
+
+            netScript.Fire(new Vector2(direction.x, direction.y));
+        }
+    }
+
+    IEnumerator grabDone(bool grabMelee)
     {
         yield return new WaitForSeconds(postGrabDelay);
         grabbing = false;
 
-        //float direction = (playerTransform.position.x - transform.position.x > 0) ? 1 : -1;
-        float horizontalDistance = playerTransform.position.x - transform.position.x;
-
-        // horizontal grab direction check
-        if ((!spriteRenderer.flipX && horizontalDistance > 0) || (spriteRenderer.flipX && horizontalDistance < 0))
+        if (grabMelee)
         {
-            // horizontal grab range check
-            if (Mathf.Abs(horizontalDistance) <= grabRange)
-            {
-                float verticalDistance = playerTransform.position.y - transform.position.y;
+            //float direction = (playerTransform.position.x - transform.position.x > 0) ? 1 : -1;
+            float horizontalDistance = playerTransform.position.x - transform.position.x;
 
-                if (grabAllHeight)
+            // horizontal grab direction check
+            if ((!spriteRenderer.flipX && horizontalDistance > 0) || (spriteRenderer.flipX && horizontalDistance < 0))
+            {
+                // horizontal grab range check
+                if (Mathf.Abs(horizontalDistance) <= grabRange)
                 {
-                    if (verticalDistance < 1.5)
+                    float verticalDistance = playerTransform.position.y - transform.position.y;
+
+                    if (grabAllHeight)
                     {
-                        PlayerManager.instance.GameOver();
+                        if (verticalDistance < 1.5)
+                        {
+                            PlayerManager.instance.GameOver();
+                        }
                     }
-                }
-                else
-                {
-                    int grabHeight = animator.GetInteger("GrabHeight");
-                    if ((verticalDistance < -0.5 && grabHeight == 0)  // cat is on ground and human grabbing low
-                        || (verticalDistance < 0.5 && grabHeight == 1) // cat is mid air and human grabbing mid 
-                        || (verticalDistance < 1.5 && grabHeight == 2)) // cat is high up but still within reach and human grabbing high
+                    else
                     {
-                        PlayerManager.instance.GameOver();
+                        int grabHeight = animator.GetInteger("GrabHeight");
+                        if ((verticalDistance < -0.5 && grabHeight == 0)  // cat is on ground and human grabbing low
+                            || (verticalDistance < 0.5 && grabHeight == 1) // cat is mid air and human grabbing mid 
+                            || (verticalDistance < 1.5 && grabHeight == 2)) // cat is high up but still within reach and human grabbing high
+                        {
+                            PlayerManager.instance.GameOver();
+                        }
                     }
                 }
             }
@@ -98,12 +141,12 @@ public class Human : MonoBehaviour
     {
         if (playerTransform != null)
         {
-            if (grabbing)
+            if (grabbing || isSlip)
                 return;
             float distance = Mathf.Abs(playerTransform.position.x - transform.position.x);
             float direction = (playerTransform.position.x - transform.position.x > 0) ? 1 : -1;
 
-            if (distance < grabRange * 0.9)
+            if (distance < grabRange * 0.9 && (!isRanged || distance > 1))
             {
                 StartCoroutine(playGrabAnimation());
                 grabbing = true;
@@ -152,4 +195,24 @@ public class Human : MonoBehaviour
         Vector3 cubeSize = new Vector3(grabRange, 3, 0);
         Gizmos.DrawWireCube(cubePosition, cubeSize);
     }*/
+
+    public bool TrySlip()
+    {
+        if (isSlip) // can't slip if already slipped
+            return false;
+
+        isSlip = true;
+        animator.SetBool("Fall", true);
+        StartCoroutine(RecoverFromSlip());
+
+        AudioManager.instance.PlaySound(12);
+
+        return true;
+    }
+    IEnumerator RecoverFromSlip()
+    {
+        yield return new WaitForSeconds(slipRecoverTime);
+        animator.SetBool("Fall", false);
+        isSlip = false;
+    }
 }

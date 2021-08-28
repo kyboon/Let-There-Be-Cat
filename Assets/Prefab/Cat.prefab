@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9737897fb2ab4464bb87fbda8adcf0bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 500
+  m_JumpForce: 510
   m_MovementSmoothing: 0.05
   m_AirControl: 1
   m_WhatIsGround:
@@ -226,6 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horizontalSpeed: 30
+  idleCooldown: 5
 --- !u!114 &662020194077357252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,5 +276,6 @@ MonoBehaviour:
   menuTitle: {fileID: 0}
   mainMenuScore: {fileID: 0}
   resumeButton: {fileID: 0}
+  cutSceneManager: {fileID: 0}
   difficultySet: 0
   humanSpawner: {fileID: 0}

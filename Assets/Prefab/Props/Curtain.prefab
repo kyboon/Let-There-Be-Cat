@@ -229,6 +229,9 @@ MonoBehaviour:
   spriteRenderer: {fileID: 6256591501120055390}
   animator: {fileID: 6256591501120055395}
   animOverride: {fileID: 22100000, guid: fc600e512f0d8c9419477084832a8b51, type: 2}
+  breakParticle: {fileID: 0}
+  breakAudioIndex: 6
+  breakAudioCount: 3
 --- !u!1 &6256591501120055392
 GameObject:
   m_ObjectHideFlags: 0

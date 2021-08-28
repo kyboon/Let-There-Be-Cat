@@ -272,9 +272,11 @@ MonoBehaviour:
   hasInteracted: 0
   scorePerInteraction: 2
   canOnlyInteractOnce: 1
+  isBroken: 0
   fallRotateSpeed: 360
   animator: {fileID: 7787867790263378007}
   animOverride: {fileID: 22100000, guid: 4e8b17839ab4cb64eb1241fa52112a3f, type: 2}
+  breakAudioIndex: 4
 --- !u!1 &7787867790263378024
 GameObject:
   m_ObjectHideFlags: 0

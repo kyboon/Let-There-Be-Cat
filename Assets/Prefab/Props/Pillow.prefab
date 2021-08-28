@@ -158,6 +158,8 @@ MonoBehaviour:
   animator: {fileID: 3999054954511949736}
   animOverride: {fileID: 22100000, guid: d11a12f464ae8d649ab4cc1e340f2450, type: 2}
   breakParticle: {fileID: 0}
+  breakAudioIndex: 6
+  breakAudioCount: 3
 --- !u!1 &3999054955821949228
 GameObject:
   m_ObjectHideFlags: 0

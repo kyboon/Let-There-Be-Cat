@@ -13,6 +13,9 @@ public class BreakableProp : InteractableProp
 
     public ParticleSystem breakParticle;
 
+    public int breakAudioIndex = -1;
+    public int breakAudioCount = -1;
+
     protected override void Start()
     {
         base.Start();
@@ -48,5 +51,17 @@ public class BreakableProp : InteractableProp
         canOnlyInteractOnce = breakSprites.Count + (hasBreakAnimation ? 1 : 0) <= 1;
 
         addScore();
+
+        if (breakAudioIndex != -1)
+        {
+            if (breakAudioCount != -1)
+            {
+                int randomInt = Random.Range(breakAudioIndex, breakAudioIndex + breakAudioCount);
+                AudioManager.instance.PlaySound(randomInt);
+            } else
+            {
+                AudioManager.instance.PlaySound(breakAudioIndex);
+            }
+        }
     }
 }

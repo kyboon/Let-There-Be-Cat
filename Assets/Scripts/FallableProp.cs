@@ -10,10 +10,13 @@ public class FallableProp : InteractableProp
 {
     // Start is called before the first frame update
     private bool isFallen = false;
-    private bool isBroken = false;
+    [HideInInspector]
+    public bool isBroken = false;
     public float fallRotateSpeed = 270f;
     public Animator animator;
     public AnimatorOverrideController animOverride;
+
+    public int breakAudioIndex = -1;
 
     public FallListener listener;
 
@@ -65,6 +68,11 @@ public class FallableProp : InteractableProp
             if (listener != null)
             {
                 listener.Broken(gameObject);
+            }
+
+            if (breakAudioIndex >= 0)
+            {
+                AudioManager.instance.PlaySound(breakAudioIndex);
             }
         }
     }

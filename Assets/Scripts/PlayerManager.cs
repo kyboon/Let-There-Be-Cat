@@ -15,7 +15,11 @@ public class PlayerManager : MonoBehaviour
     public GameObject mainMenu;
     public Text menuTitle;
     public Text mainMenuScore;
-    public GameObject resumeButton; 
+    public GameObject resumeButton;
+
+    public int difficultySet = 0;
+
+    public HumanSpawner humanSpawner;
 
     private int score = 0;
     // Start is called before the first frame update
@@ -45,6 +49,17 @@ public class PlayerManager : MonoBehaviour
         score += scoreToAdd;
         if (scoreText != null)
             scoreText.text = score.ToString();
+
+        Debug.Log(score);
+        if (score >= 20 && difficultySet == 0)
+        {
+            humanSpawner.setDifficulty(1);
+            difficultySet = 1;
+        } else if (score >= 50 && difficultySet == 1)
+        {
+            humanSpawner.setDifficulty(2);
+            difficultySet = 2;
+        }
     }
     public void GameOver()
     {

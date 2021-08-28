@@ -18,16 +18,24 @@ public class Human : MonoBehaviour
     public float grabDelay = 0.5f;
     public float postGrabDelay = 0.5f;
 
+    public bool grabAllHeight = false;
+
     public GameObject questionMark;
     public GameObject exclamationMark;
 
     private Animator animator;
+    public AnimatorOverrideController animOverride;
 
     void Start()
     {
         playerTransform = PlayerManager.instance.gameObject.transform;
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (animator != null && animOverride != null)
+        {
+            animator.runtimeAnimatorController = animOverride;
+        }
     }
 
     // Update is called once per frame
@@ -65,12 +73,22 @@ public class Human : MonoBehaviour
             {
                 float verticalDistance = playerTransform.position.y - transform.position.y;
 
-                int grabHeight = animator.GetInteger("GrabHeight");
-                if ((verticalDistance < -0.5 && grabHeight == 0)  // cat is on ground and human grabbing low
-                    || (verticalDistance < 0.5 && grabHeight == 1) // cat is mid air and human grabbing mid 
-                    || (verticalDistance < 1.5 && grabHeight == 2)) // cat is high up but still within reach and human grabbing high
+                if (grabAllHeight)
                 {
-                    PlayerManager.instance.GameOver();
+                    if (verticalDistance < 1.5)
+                    {
+                        PlayerManager.instance.GameOver();
+                    }
+                }
+                else
+                {
+                    int grabHeight = animator.GetInteger("GrabHeight");
+                    if ((verticalDistance < -0.5 && grabHeight == 0)  // cat is on ground and human grabbing low
+                        || (verticalDistance < 0.5 && grabHeight == 1) // cat is mid air and human grabbing mid 
+                        || (verticalDistance < 1.5 && grabHeight == 2)) // cat is high up but still within reach and human grabbing high
+                    {
+                        PlayerManager.instance.GameOver();
+                    }
                 }
             }
         }
@@ -85,7 +103,7 @@ public class Human : MonoBehaviour
             float distance = Mathf.Abs(playerTransform.position.x - transform.position.x);
             float direction = (playerTransform.position.x - transform.position.x > 0) ? 1 : -1;
 
-            if (distance < grabRange)
+            if (distance < grabRange * 0.9)
             {
                 StartCoroutine(playGrabAnimation());
                 grabbing = true;

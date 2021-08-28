@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 662020194077357255}
   - component: {fileID: 662020194077357252}
   - component: {fileID: 662020194077357253}
+  - component: {fileID: 27342410}
   m_Layer: 3
   m_Name: Cat
   m_TagString: Player
@@ -138,7 +139,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1827751439
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -3198140239955184818, guid: 278106241365b15429c844d66b7fe353, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -164,19 +165,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_JumpForce: 500
-  m_CrouchSpeed: 0.5
   m_MovementSmoothing: 0.05
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 311
   m_GroundCheck: {fileID: 662020193066780353}
-  m_CeilingCheck: {fileID: 662020193960854341}
-  m_CrouchDisableCollider: {fileID: 0}
+  colliderDisableWhenJump: {fileID: 662020194077357251}
+  colliderDisableThisFrame: 0
   OnLandEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCrouchEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!58 &662020194077357251
@@ -192,9 +189,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.6}
+  m_Offset: {x: 0, y: -0.65}
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.35
 --- !u!50 &662020194077357250
 Rigidbody2D:
   serializedVersion: 4
@@ -260,3 +257,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &27342410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662020194077357309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfe24003c659b5b4592197cce8f54df2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 0}
+  canPause: 1
+  mainMenu: {fileID: 0}
+  menuTitle: {fileID: 0}
+  mainMenuScore: {fileID: 0}
+  resumeButton: {fileID: 0}
+  difficultySet: 0
+  humanSpawner: {fileID: 0}

@@ -38,7 +38,7 @@ public class Net : MonoBehaviour
     {
         if (collision.gameObject.layer == 3)
         {
-            PlayerManager.instance.GameOver();
+            PlayerManager.instance.Damage();
         }
     }
 }

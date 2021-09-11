@@ -19,6 +19,8 @@ public class CutSceneManager : MonoBehaviour
     private Color opaqueColor = new Color(1, 1, 1, 1);
     private Color semiTransColor = new Color(1, 1, 1, 0.5f);
 
+    private bool playedDogScene = false;
+
     private List<string> cutSceneTexts = new List<string>()
     {
         "That's enough! I'm calling animal control.",
@@ -47,13 +49,23 @@ public class CutSceneManager : MonoBehaviour
         
     }
 
-    public void PlayCutScene(int index)
+    public bool PlayCutScene(int index)
     {
         if (PlayerPrefs.GetInt("ShowCutscene", 1) == 1)
         {
+
+            if (index == 4)
+            {
+                if (playedDogScene)
+                    return false;
+                playedDogScene = true;
+            }
+
             currentIndex = index;
             StartCutScene();
+            return true;
         }
+        return false;
     }
 
     void StartCutScene()

@@ -119,7 +119,7 @@ public class Human : MonoBehaviour
                     {
                         if (verticalDistance < 1.5)
                         {
-                            PlayerManager.instance.GameOver();
+                            PlayerManager.instance.Damage();
                         }
                     }
                     else
@@ -129,7 +129,7 @@ public class Human : MonoBehaviour
                             || (verticalDistance < 0.5 && grabHeight == 1) // cat is mid air and human grabbing mid 
                             || (verticalDistance < 1.5 && grabHeight == 2)) // cat is high up but still within reach and human grabbing high
                         {
-                            PlayerManager.instance.GameOver();
+                            PlayerManager.instance.Damage();
                         }
                     }
                 }

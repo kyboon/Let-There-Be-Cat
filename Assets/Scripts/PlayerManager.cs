@@ -16,6 +16,13 @@ public class PlayerManager : MonoBehaviour
     public Text menuTitle;
     public Text mainMenuScore;
     public GameObject resumeButton;
+    public Text highScoreText;
+
+    public Image life1;
+    public Image life2;
+    public Image life3;
+
+    private bool invincible = false;
 
     public CutSceneManager cutSceneManager;
 
@@ -23,12 +30,18 @@ public class PlayerManager : MonoBehaviour
 
     public HumanSpawner humanSpawner;
 
+    public SpriteRenderer sp;
+
+    public int life = 3;
+
     private int score = 0;
     // Start is called before the first frame update
     private void Awake()
     {
+        sp = GetComponent<SpriteRenderer>();
         instance = this;
         score = 0;
+        life = 3;
         if (scoreText != null)
             scoreText.text = "0";
     }
@@ -82,12 +95,54 @@ public class PlayerManager : MonoBehaviour
                 cutSceneManager.PlayCutScene(3);
         }
     }
-    public void GameOver()
+
+    public void Damage()
     {
+        if (invincible)
+            return;
+        life -= 1;
+        
+        if (life == 0)
+        {
+            life1.color = new Color(0.5f, 0.5f, 0.5f, 0.5f);
+        } else if (life == 1)
+        {
+            life2.color = new Color(0.5f, 0.5f, 0.5f, 0.5f);
+        } else if (life == 2)
+        {
+            life3.color = new Color(0.5f, 0.5f, 0.5f, 0.5f);
+        }
+
+        if (life <= 0)
+            GameOver();
+        else
+        {
+            setInvincible(true);
+            StartCoroutine(resetInvicibility());
+        }
+    }
+
+    IEnumerator resetInvicibility()
+    {
+        yield return new WaitForSeconds(1);
+        setInvincible(false);
+    }
+    private void GameOver()
+    {
+
         Time.timeScale = 0;
         Debug.Log("GameOver");
         showMenu(true);
         AudioManager.instance.PlaySound(0);
+    }
+
+    public void setInvincible(bool isInvicible)
+    {
+        if (isInvicible)
+            sp.color = new Color(1, 1, 1, 0.5f);
+        else
+            sp.color = new Color(1, 1, 1, 1);
+        invincible = isInvicible;
     }
 
     public void PauseGame()
@@ -123,6 +178,18 @@ public class PlayerManager : MonoBehaviour
                 resumeButton.SetActive(false);
                 mainMenuScore.enabled = true;
                 mainMenuScore.text = score.ToString();
+
+                int highScore = PlayerPrefs.GetInt("HighScore", 0);
+
+                if (score > highScore)
+                {
+                    highScoreText.text = "New Highscore";
+                    PlayerPrefs.SetInt("HighScore", score);
+                } else
+                {
+                    highScoreText.text = "Highscore: " + highScore.ToString();
+                }
+
             } else
             {
                 menuTitle.text = "Paused";
